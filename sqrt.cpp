@@ -3,29 +3,35 @@
 using namespace std;
 
 int main() {
-    cout.precision(15);
+    cout.precision(20);
     cout << fixed;
 
-    double target = 2;
+    double target;
+    double n;
+
+    cout << "Enter the radicand: ";
+    cin >> target;
+    cout << "Enter the index: ";
+    cin >> n;
 
     double start = 0;
     double end = target;
-
     double middle = (start+end)/2;
 
     unsigned int iter = 0;
+   
     
     while (true) {
         middle = (start + end) / 2;
 
-        if (abs((middle * middle) - target) < 1.0E-15) {
+        if (abs((pow(middle, n)) - target) < 1.0E-10) {
             cout << "The square root is " << middle << endl;
             break;
         }
-        else if (middle * middle < target) {
+        else if (pow(middle, n) < target) {
             start = middle;
         }
-        else if(middle * middle > target){
+        else if(pow(middle, n) > target){
             end = middle;
         }
         iter++;
